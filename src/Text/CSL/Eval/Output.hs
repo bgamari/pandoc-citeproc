@@ -128,6 +128,8 @@ formatOutput o =
       OLoc     os      f  -> formatOutput (Output os f)
       Output   []      _  -> Formatted []
       Output   os      f  -> addFormatting f $ format os
+      OAnchor  an         -> Formatted [Span ("",[],[("id","ref-"++an)]) []]
+      -- Ideally the above should produce an Anchor Block element
       _                   -> Formatted []
     where
       format = mconcat . map formatOutput

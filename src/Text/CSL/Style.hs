@@ -549,6 +549,7 @@ data Output
                                                         -- name disambiguation.
     | OLoc    [Output]            Formatting            -- ^ The citation's locator
     | Output  [Output]            Formatting            -- ^ Some nested 'Output'
+    | OAnchor  String                                   -- ^ An anchor point
       deriving ( Eq, Ord, Show, Typeable, Data, Generic )
 
 type Citations = [[Cite]]

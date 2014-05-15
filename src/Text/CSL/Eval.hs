@@ -59,7 +59,8 @@ evalLayout (Layout _ _ es) em b l m o a r
       locale = case l of
                  [x] -> x
                  _   -> Locale [] [] [] [] []
-      job    = expandMacros es >>= evalElements
+      job    = expandMacros es >>= evalElements >>= addAnchor
+      addAnchor out = return $ OAnchor (unLiteral $ refId r) : out
       cit    = case em of
                  EvalCite    c -> c
                  EvalSorting c -> c
